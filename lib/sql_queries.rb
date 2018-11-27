@@ -36,3 +36,7 @@ end
  def selects_the_category_name_and_the_sum_total_of_the_all_its_pledges_for_the_books_category
   "SELECT projects.category, SUM(pledges.amount) FROM Pledges LEFT OUTER JOIN Projects ON Pledges.project_id = Projects.id GROUP BY(projects.category) HAVING projects.category = 'books'"
 end
+
+def selects_the_titles_of_all_projects_and_their_pledge_amounts_alphabetized_by_name
+  "SELECT projects.title, SUM(pledges.amount) FROM Projects INNER JOIN Pledges ON Projects.id = Pledges.project_id GROUP BY(projects.title) ORDER BY(projects.title) ASC"
+end
